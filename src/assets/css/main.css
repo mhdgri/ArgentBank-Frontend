@@ -289,3 +289,8 @@ body {
     width: 200px;
   }
 }
+
+.error-message {
+  color: red;
+  font-weight: bold;
+}

@@ -1,29 +1,49 @@
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router";
+
+import { login } from "../store/authSlice";
+import InputWrapper from "../components/InputWrapper";
+
+
 const SignInPage = () => {
+    const [errorMessage, setErrorMessage] = useState("");
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        const { username, password } = e.target.elements;
+        const rememberMe = e.target.elements["remember-me"];
+        
+      try {
+            const resultAction = await dispatch(login({ email: username.value, password: password.value, rememberMe: rememberMe.checked }));
+            if (login.fulfilled.match(resultAction)) {
+                navigate("/user");
+            } else {
+                setErrorMessage(resultAction.payload || "Failed to sign in");
+            }
+        } catch (err) {
+            setErrorMessage("Failed to sign in");
+        }
+    };
+
     return (
         <main class="main bg-dark">
             <section className="sign-in-content">
                 <i className="fa fa-user-circle sign-in-icon"></i>
                 <h1>Sign In</h1>
-                <form>
-                    <div className="input-wrapper">
-                        <label for="username">Username</label>
-                        <input type="text" id="username" />
-                    </div>
-                    <div className="input-wrapper">
-                        <label for="password">Password</label>
-                        <input type="password" id="password" />
-                    </div>
+                <form onSubmit={handleSubmit}>
+                    <InputWrapper label="Username" type="text" id="username" />
+                    <InputWrapper label="Password" type="password" id="password" />
+
+                    {errorMessage && <p className="error-message">{errorMessage}</p>}
+
                     <div className="input-remember">
                         <input type="checkbox" id="remember-me" />
-                        <label for="remember-me">Remember me</label>
+                        <label htmlFor="remember-me">Remember me</label>
                     </div>
-                    {/* PLACEHOLDER DUE TO STATIC SITE */}
-                    <a href="./user.html" className="sign-in-button">
-                        Sign In
-                    </a>
-                    {/* <!-- SHOULD BE THE BUTTON BELOW -->
-          <!-- <button className="sign-in-button">Sign In</button> -->
-          <!--  --> */}
+                    <button className="sign-in-button">Sign In</button>
                 </form>
             </section>
         </main>
