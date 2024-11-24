@@ -9,6 +9,7 @@ import MainPage from "./pages/Main";
 import UserPage from "./pages/User";
 import GuardedRoute from "./components/GuardedRoute";
 import { store } from "./store/index";
+import 'font-awesome/css/font-awesome.min.css';
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
