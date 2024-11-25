@@ -11,6 +11,7 @@ import UserPage from "./pages/User";
 import GuardedRoute from "./components/GuardedRoute";
 import { store, persistor } from "./store/index";
 import "font-awesome/css/font-awesome.min.css";
+import SignOut from "./pages/SignOut";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -20,6 +21,8 @@ const AppRoutes = () => {
             <Route path="/" element={<AppLayout />}>
                 <Route index element={<MainPage />} />
                 <Route path="sign-in" element={<SignInPage />} />
+
+                <Route path="sign-out" element={<SignOut />} />
 
                 <Route
                     path="user"
