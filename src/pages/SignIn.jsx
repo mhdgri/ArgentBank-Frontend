@@ -4,6 +4,7 @@ import { useNavigate } from "react-router";
 
 import { login } from "../store/authSlice";
 import InputWrapper from "../components/InputWrapper";
+import ErrorMessage from "../components/ErrorMessage";
 
 
 const SignInPage = () => {
@@ -29,7 +30,7 @@ const SignInPage = () => {
     };
 
     return (
-        <main class="main bg-dark">
+        <main className="main bg-dark">
             <section className="sign-in-content">
                 <i className="fa fa-user-circle sign-in-icon"></i>
                 <h1>Sign In</h1>
@@ -37,7 +38,7 @@ const SignInPage = () => {
                     <InputWrapper label="Username" type="text" id="username" />
                     <InputWrapper label="Password" type="password" id="password" />
 
-                    {errorMessage && <p className="error-message">{errorMessage}</p>}
+                    <ErrorMessage message={errorMessage} />
 
                     <div className="input-remember">
                         <input type="checkbox" id="remember-me" />
