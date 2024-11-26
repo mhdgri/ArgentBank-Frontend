@@ -1,16 +1,23 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router";
 
 import { login } from "../store/authSlice";
 import InputWrapper from "../components/InputWrapper";
 import ErrorMessage from "../components/ErrorMessage";
-
+import useAuth from "../hooks/useAuth";
 
 const SignInPage = () => {
     const [errorMessage, setErrorMessage] = useState("");
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    const { isAuthenticated } = useAuth();
+
+    useEffect(() => {
+        if (isAuthenticated) {
+            navigate("/user");
+        }
+    }, [isAuthenticated, navigate]);
 
     function validateForm(username, password) {
         if (!username || !password) {
@@ -20,17 +27,17 @@ const SignInPage = () => {
         return true;
     }
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = async e => {
         e.preventDefault();
-        
+
         const { username, password } = e.target.elements;
         const rememberMe = e.target.elements["remember-me"];
 
         if (!validateForm(username.value, password.value)) {
             return;
         }
-        
-      try {
+
+        try {
             const resultAction = await dispatch(login({ email: username.value, password: password.value, rememberMe: rememberMe.checked }));
             if (login.fulfilled.match(resultAction)) {
                 navigate("/user");
