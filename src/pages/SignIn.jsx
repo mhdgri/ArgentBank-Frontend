@@ -12,10 +12,23 @@ const SignInPage = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
+    function validateForm(username, password) {
+        if (!username || !password) {
+            setErrorMessage("Please fill in all fields");
+            return false;
+        }
+        return true;
+    }
+
     const handleSubmit = async (e) => {
         e.preventDefault();
+        
         const { username, password } = e.target.elements;
         const rememberMe = e.target.elements["remember-me"];
+
+        if (!validateForm(username.value, password.value)) {
+            return;
+        }
         
       try {
             const resultAction = await dispatch(login({ email: username.value, password: password.value, rememberMe: rememberMe.checked }));
