@@ -29,7 +29,7 @@ export const login = createAsyncThunk("auth/login", async ({ email, password, re
 
         return { token, email, rememberMe };
     } catch (error) {
-        return rejectWithValue(error.message || "An error occurred during login.");
+        return rejectWithValue("An error occurred during login.");
     }
 });
 
