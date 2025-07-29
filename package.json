@@ -1,0 +1,12 @@
+{
+  "name": "argentbank-frontend",
+  "version": "1.0.0",
+  "description": "Front-end React de l'application bancaire Argent Bank avec authentification, profil utilisateur, et modification du pseudo.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
