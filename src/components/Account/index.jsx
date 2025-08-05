@@ -1,34 +1,13 @@
-function Account() {
+import React from "react"
+
+function Account({ title, amount, description }) {
   return (
     <div>
-      <section class="account">
-        <div class="account-content-wrapper">
-          <h3 class="account-title">Argent Bank Checking (x8349)</h3>
-          <p class="account-amount">$2,082.79</p>
-          <p class="account-amount-description">Available Balance</p>
-        </div>
-        <div class="account-content-wrapper cta">
-          <button class="transaction-button">View transactions</button>
-        </div>
-      </section>
-      <section class="account">
-        <div class="account-content-wrapper">
-          <h3 class="account-title">Argent Bank Savings (x6712)</h3>
-          <p class="account-amount">$10,928.42</p>
-          <p class="account-amount-description">Available Balance</p>
-        </div>
-        <div class="account-content-wrapper cta">
-          <button class="transaction-button">View transactions</button>
-        </div>
-      </section>
-      <section class="account">
-        <div class="account-content-wrapper">
-          <h3 class="account-title">Argent Bank Credit Card (x8349)</h3>
-          <p class="account-amount">$184.30</p>
-          <p class="account-amount-description">Current Balance</p>
-        </div>
-        <div class="account-content-wrapper cta">
-          <button class="transaction-button">View transactions</button>
+      <section className="account">
+        <div className="account-content-wrapper">
+          <h3 className="account-title">{title}</h3>
+          <p className="account-amount">{amount}</p>
+          <p className="account-amount-description">{description}</p>
         </div>
       </section>
     </div>
@@ -36,3 +15,4 @@ function Account() {
 }
 
 export default Account;
+
