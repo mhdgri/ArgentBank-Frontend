@@ -5,6 +5,7 @@ import Profile from "./pages/Profile";
 import Navbar from "./components/Navbar/index";
 import Footer from "./components/Footer/index";
 import "./assets/css/main.css";
+import React from "react";
 
 function App() {
   return (
