@@ -1,4 +1,4 @@
-import React from "react"
+
 
 function Account({ title, amount, description }) {
   return (
