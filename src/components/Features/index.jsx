@@ -1,34 +1,42 @@
 import React from "react";
-
+import Feature from "../Feature";
+import chatIcon from "../../assets/img/icon-chat.png";
+import moneyIcon from "../../assets/img/icon-money.png";
+import securityIcon from "../../assets/img/icon-security.png";
 
 function Features() {
   return (
     <section className="features">
       <h2 className="sr-only">Features</h2>
 
-      <div className="feature-item">
-        <img src="./img/icon-chat.png" alt="Chat Icon" className="feature-icon" />
-        <h3 className="feature-item-title">You are our #1 priority</h3>
-        <p>
-          Need to talk to a representative? You can get in touch through our
-          24/7 chat or through a phone call in less than 5 minutes.
-        </p>
-      </div>
+      <Feature
+        className="feature-item"
+        imgSrc={chatIcon}
+        imgAlt="Chat Icon"
+        title="You are our #1 priority"
+      >
+        Need to talk to a representative? You can get in touch through our 24/7
+        chat or through a phone call in less than 5 minutes.
+      </Feature>
 
-      <div className="feature-item">
-        <img src="./img/icon-money.png" alt="Money Icon" className="feature-icon" />
-        <h3 className="feature-item-title">More savings means higher rates</h3>
-        <p>The more you save with us, the higher your interest rate will be!</p>
-      </div>
+      <Feature
+        className="feature-item"
+        imgSrc={moneyIcon}
+        imgAlt="Money Icon"
+        title="More savings means higher rates"
+      >
+        The more you save with us, the higher your interest rate will be!
+      </Feature>
 
-      <div className="feature-item">
-        <img src="./img/icon-security.png" alt="Security Icon" className="feature-icon" />
-        <h3 className="feature-item-title">Security you can trust</h3>
-        <p>
-          We use top of the line encryption to make sure your data and money is
-          always safe.
-        </p>
-      </div>
+      <Feature
+        className="feature-item"
+        imgSrc={securityIcon}
+        imgAlt="Security Icon"
+        title="Security you can trust"
+      >
+        We use top of the line encryption to make sure your data and money is
+        always safe.
+      </Feature>
     </section>
   );
 }
