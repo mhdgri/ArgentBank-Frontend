@@ -10,7 +10,6 @@ function Features() {
       <h2 className="sr-only">Features</h2>
 
       <Feature
-        className="feature-item"
         imgSrc={chatIcon}
         imgAlt="Chat Icon"
         title="You are our #1 priority"
@@ -20,7 +19,6 @@ function Features() {
       </Feature>
 
       <Feature
-        className="feature-item"
         imgSrc={moneyIcon}
         imgAlt="Money Icon"
         title="More savings means higher rates"
@@ -29,7 +27,6 @@ function Features() {
       </Feature>
 
       <Feature
-        className="feature-item"
         imgSrc={securityIcon}
         imgAlt="Security Icon"
         title="Security you can trust"
