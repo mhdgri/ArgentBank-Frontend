@@ -1,7 +1,7 @@
 import React, { useState } from "react";
+import "../../assets/css/main.css";
 import InputField from "../../components/InputField";
 import { useNavigate } from "react-router-dom";
-import Profile from "../Profile";
 import RememberMeCheckBox from "../../components/RememberMeCheckBox";
 
 function Login() {
@@ -17,9 +17,9 @@ function Login() {
   console.log(handleSubmit);
 
   return (
-    <main className="main bg-dark">
+    <main className="main bg-dark" style={{padding: "50px 0 300px 0"}}>
       <section className="sign-in-content">
-        <i className="fa fa-user-circle sign-in-icon"></i>
+        <i className="fa fa-user-circle sign-in-icon" />
         <h1>Sign In</h1>
         <form onSubmit={handleSubmit}>
           <InputField
