@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import "../../assets/css/main.css";
-import React from "react";
+import argentBank from "../../assets/img/argentBankLogo.png"
 
 function Navbar() {
   return (
@@ -8,7 +8,7 @@ function Navbar() {
       <Link className="main-nav-logo" to="/">
         <img
           className="main-nav-logo-image"
-          src="/img/argentBankLogo.png"
+          src={argentBank}
           alt="Argent Bank Logo"
         />
         <h1 className="sr-only">Argent Bank</h1>
