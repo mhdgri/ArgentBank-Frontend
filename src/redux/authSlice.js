@@ -27,7 +27,24 @@ const authSlice = createSlice({
         clearError: (state) => {
             state.error = null
         },
+        logout: (state) => {
+            state.token = null
+            state.isAuthenticated = false
+            state.error = null
+            console.log('Utilisateur déconnecté !')
+            try {
+                localStorage.removeItem('userName');
+                localStorage.removeItem('token');
+                localStorage.removeItem('user');
+                console.log('localStorage nettoyé');
+            } catch (error) {
+                console.warn('Erreur lors du nettoyage du localStorage:', error);
+            }
+            
+            console.log('Utilisateur déconnecté !');
+        },
     },
+        
     extraReducers: (builder) => {
         builder
             .addCase(loginUser.pending, (state) => {
@@ -49,5 +66,5 @@ const authSlice = createSlice({
     }
 })
 
-export const { clearError } = authSlice.actions
+export const { clearError, logout } = authSlice.actions
 export default authSlice.reducer

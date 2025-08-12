@@ -1,18 +1,32 @@
 import React, { useEffect, useState } from "react";
 import Account from "../../components/Account/index";
 import UserProfileHeader from "../../components/UserProfileHeader";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 function Profile() {
+  const navigate = useNavigate();
+  const { isAuthenticated } = useSelector((state) => state.auth);
+
   const [userName, setUserName] = useState("Tony Jarvis");
   const [firstName] = useState("Tony");
   const [lastName] = useState("Jarvis");
 
   const [isEditing, setIsEditing] = useState(false);
   const [formUserName, setFormUserName] = useState(userName);
+
+  useEffect(() => {
+    if (!isAuthenticated) {
+      console.log('Utilisateur non connecté, redirection vers home');
+      navigate('/');
+    }
+  }, [isAuthenticated, navigate]);
+
   useEffect(() => {
     const saved = localStorage.getItem("userName");
     if (saved) setUserName(saved);
   }, []);
+
   useEffect(() => {
     localStorage.setItem("userName", userName);
   }, [userName]);
@@ -31,6 +45,14 @@ function Profile() {
     setFormUserName(userName);
     setIsEditing(false);
   };
+
+  if (!isAuthenticated) {
+    return (
+      <div style={{ textAlign: 'center', padding: '50px' }}>
+        <p>Redirection en cours...</p>
+      </div>
+    );
+  }
 
   return (
     <main className="main bg-dark" style={{padding: ".5px 0 65px 0"}}>
