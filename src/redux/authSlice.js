@@ -6,6 +6,7 @@ export const loginUser = createAsyncThunk(
     async (credentials, { rejectWithValue }) => {
         try {
             const data = await apiService.login(credentials)
+            localStorage.setItem('token', data.body.token)
             return data.body.token
         } catch (error) {
             return rejectWithValue(error.message || 'Erreur de connexion')
@@ -14,8 +15,8 @@ export const loginUser = createAsyncThunk(
 )
 
 const initialState = {
-    token: null,
-    isAuthenticated: false,
+    token: localStorage.getItem('token') || null,
+    isAuthenticated: !!localStorage.getItem('token'),
     isLoading: false,
     error: null,
 }
