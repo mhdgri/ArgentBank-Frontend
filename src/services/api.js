@@ -13,6 +13,11 @@ class ApiService {
             ...options,
         }
 
+        const token = localStorage.getItem('token')
+        if (token) {
+            config.headers.Authorization = `Bearer ${token}`
+        }
+
         try {
             const response = await fetch(url, config)
             const data = await response.json()
@@ -32,6 +37,18 @@ class ApiService {
         return this.request('/user/login', {
             method: 'POST',
             body: JSON.stringify(credentials),
+        })
+    }
+
+    async getUserProfile() {
+        return this.request('/user/profile')
+    }
+
+    // Mettre à jour le profil utilisateur
+    async updateUserProfile(userData) {
+        return this.request('/user/profile', {
+            method: 'PUT',
+            body: JSON.stringify(userData),
         })
     }
 }
