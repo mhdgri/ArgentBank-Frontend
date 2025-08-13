@@ -4,17 +4,20 @@ import argentBank from "../../assets/img/argentBankLogo.png"
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { logout } from "../../redux/authSlice"
+import { clearUserData } from "../../redux/userSlice";
 
 function Navbar() {
   const navigate = useNavigate()
-
   const dispatch = useDispatch();
+
   const { isAuthenticated } = useSelector((state) => state.auth);
+  const { profile } = useSelector((state) => state.user);
 
   const handleSignOut = () => {
+    // Nettoyer les données utilisateur ET l'auth
+    dispatch(clearUserData());
     dispatch(logout());
-    console.log('Clic sur déconnexion !');
-
+    console.log('Déconnexion effectuée');
     navigate('/');
   };
 
@@ -33,7 +36,7 @@ function Navbar() {
           <>
             <Link className="main-nav-item" to="/profile">
               <i className="fa fa-user-circle"></i>
-              User
+              {profile?.userName || 'User'}
             </Link>
             <button 
               className="main-nav-item"
