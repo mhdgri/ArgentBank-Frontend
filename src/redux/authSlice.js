@@ -32,7 +32,7 @@ const authSlice = createSlice({
             state.token = null
             state.isAuthenticated = false
             state.error = null
-            console.log('Utilisateur déconnecté !')
+
             try {
                 localStorage.removeItem('userName');
                 localStorage.removeItem('token');
@@ -43,6 +43,16 @@ const authSlice = createSlice({
             }
             
             console.log('Utilisateur déconnecté !');
+        },
+        checkAuthStatus: (state) => {
+            const token = localStorage.getItem('token')
+            if (token) {
+                state.token = token
+                state.isAuthenticated = true
+            } else {
+                state.token = null
+                state.isAuthenticated = false
+            }
         },
     },
         
@@ -67,5 +77,5 @@ const authSlice = createSlice({
     }
 })
 
-export const { clearError, logout } = authSlice.actions
+export const { clearError, logout, checkAuthStatus } = authSlice.actions
 export default authSlice.reducer
