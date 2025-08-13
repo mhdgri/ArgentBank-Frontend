@@ -44,7 +44,6 @@ class ApiService {
         return this.request('/user/profile')
     }
 
-    // Mettre à jour le profil utilisateur
     async updateUserProfile(userData) {
         return this.request('/user/profile', {
             method: 'PUT',
@@ -54,5 +53,4 @@ class ApiService {
 }
 
 const apiService = new ApiService()
-
 export default apiService
