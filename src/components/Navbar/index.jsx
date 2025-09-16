@@ -14,7 +14,6 @@ function Navbar() {
   const { profile } = useSelector((state) => state.user);
 
   const handleSignOut = () => {
-    // Nettoyer les données utilisateur ET l'auth
     dispatch(clearUserData());
     dispatch(logout());
     console.log('Déconnexion effectuée');
