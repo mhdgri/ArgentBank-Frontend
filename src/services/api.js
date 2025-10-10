@@ -1,4 +1,5 @@
-const API_BASE_URL = 'http://localhost:3001/api/v1'
+// ✅ CORRIGÉ - Utilise l'URL Render en production
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001/api/v1'
 
 class ApiService {
 
