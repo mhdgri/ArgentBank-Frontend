@@ -44,6 +44,7 @@ class ApiService {
 
   async getUserProfile() {
     return this.request("/user/profile", {
+        method: 'GET'
     });
   }
 
